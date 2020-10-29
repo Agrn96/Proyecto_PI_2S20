@@ -1,4 +1,4 @@
---Crear Base de Datos
+-- Crear Base de Datos
 CREATE DATABASE proyecto_DB;
 use proyecto_DB;
 
