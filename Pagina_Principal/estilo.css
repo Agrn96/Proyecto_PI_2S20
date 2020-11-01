@@ -1,0 +1,66 @@
+﻿body
+{
+    font-family: 'Times New Roman', Times, serif;
+    margin: 1px;
+    background-color: ghostwhite;
+    margin: 30px;
+}
+
+.logo{
+    width: 350px;
+    height: 140px;
+}
+
+.logo-usac{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.conten{
+    width: 100%;
+}
+
+.formulario{
+    text-align: center;
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    width: 60%;
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.input{
+    margin-bottom: 15px;
+}
+
+.button{
+    text-align: center;
+    border: none;
+    width: 62%;
+    color: white;
+    font-size: 25px;
+    background-color: grey;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover{
+    background: chocolate;
+}
+
+p{
+    text-align: center;
+}
+
+.link{
+    text-decoration: none;
+    color: darkblue;
+    font-weight: 600;
+}
+
+.link:hover{
+    color: red;
+}
