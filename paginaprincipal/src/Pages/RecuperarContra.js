@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logoUSAC from './img/logo-usac-png.png';
-import './App.css';
+import logoUSAC from '../img/logo-usac-png.png';
+import '../EstilosCSS/App.css';
 
 class RecuperarContra extends Component{
   render(){
