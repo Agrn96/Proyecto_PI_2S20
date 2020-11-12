@@ -1,62 +1,58 @@
-import { render } from '@testing-library/react'
 import React from 'react'
-import { Component } from 'react'
 
-class ModificarDatos extends Component{
+class ModificarDatos extends React.Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             nombres: '',
             apellidos: '',
-            registroAcademico: '',
-            email: '',
-            contrasena: ''
+            registroAcademico='',
+            email='',
+            contrasena=''
         }
     }
 
-    syncCambios(value, property){
-        let estado = {};
-        state[property] = value;
-        this.setState(estado);
+    onChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
-    render() {
+    render(){
         return(
-            <form>
-                <label>Nombres</label>
+            <div>
+                <label htmlFor="nombres">Nombres</label>
                 <input 
-                    onChange={(ev)=> {this.syncCambios(ev.target.value, 'nombres')}}
-                    type="text" value={this.state.nombres} 
-                    placeholder="Ingrese el nombre"></input>
-                
-                <label>Apellidos</label>
-                <input 
-                    onChange={(ev)=> {this.syncCambios(ev.target.value, 'apellidos')}}
-                    type="text" value={this.state.apellidos} 
-                    placeholder="Ingrese el apellido"></input>
-                
-                <label>Registro Academico</label>
-                <input 
-                    onChange={(ev)=> {this.syncCambios(ev.target.value, 'registroAcademico')}}
-                    type="text" value={this.state.registroAcademico} 
-                    placeholder="Ingrese el registro"></input>
+                    value={this.state.nombres}
+                    onChange={this.onChange.bind(this)}
+                    name="nombres" id="nombres" type="text" />
 
-                <label>Correo electronico</label>
+                <label htmlFor="apellidos">Apellidos</label>
                 <input 
-                    onChange={(ev)=> {this.syncCambios(ev.target.value, 'email')}}
-                    type="text" value={this.state.email} 
-                    placeholder="Ingrese su nuevo email"></input>
+                    value={this.state.apellidos}
+                    onChange={this.onChange.bind(this)}
+                    name="apellidos" id="apellidos" type="text" />
 
-                <label>contrasena</label>
+                <label htmlFor="registroAcademico">Registro Academico</label>
                 <input 
-                    onChange={(ev)=> {this.syncCambios(ev.target.value, 'nombres')}}
-                    type="password" value={this.state.contrasena} 
-                    placeholder="Ingrese la nueva contrasena"></input>
-                
-                <div>
-                    <input type="submit" value="Agregar"></input>
-                </div>
-            </form>
+                    value={this.state.registroAcademico}
+                    onChange={this.onChange.bind(this)}
+                    name="registroAcademico" id="registroAcademico" type="text" />
+
+                <label htmlFor="email">Correo electronico</label>
+                <input 
+                    value={this.state.email}
+                    onChange={this.onChange.bind(this)}
+                    name="email" id="email" type="email" />
+
+                <label htmlFor="contrasena">Contrasena</label>
+                <input 
+                    value={this.state.contrasena}
+                    onChange={this.onChange.bind(this)}
+                    name="contrasena" id="contrasena" type="password" />
+            </div>
         )
     }
 }
+
+export default ModificarDatos

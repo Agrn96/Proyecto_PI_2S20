@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render } from 'react-dom'
 import React from 'react'
 import { Component } from 'react'
 
@@ -45,3 +45,5 @@ class AgregarCurso extends Component{
         )
     }
 }
+
+render (<AgregarCurso /> document.getElementById('Contenido'))
