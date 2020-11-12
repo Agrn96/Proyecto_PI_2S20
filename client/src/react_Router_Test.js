@@ -13,8 +13,10 @@ import Comentarios from "./Comentarios";
 function Routes() {
     return (
         <>
+
             <Router>
                 <ul id="navBar">
+                    <img src={"https://upload.wikimedia.org/wikipedia/commons/4/4a/Usac_logo.png"} alt={"Usac_Logo.png"} id='logo'/>
                     <li className="links"> <Link to="/">Home</Link></li>
                     <li className="links"> <Link to="/about">About</Link></li>
                     <li className="links"> <Link to="/profile">Profile</Link></li>

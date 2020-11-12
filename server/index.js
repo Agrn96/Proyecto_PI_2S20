@@ -56,7 +56,7 @@ app.get('/api/com/:idPub', (req, res) => {
 app.get('/api/pub/filterCurso/:curso', (req, res) => {
 
     const search = req.params.curso;
-    console.log(search);
+    //console.log(search);
     const sqlSelect =
         "SELECT * FROM proyecto_db.publicacion LEFT JOIN proyecto_db.curso ON proyecto_db.publicacion.Curso_CodigoCurso=proyecto_db.curso.CodigoCurso LEFT JOIN proyecto_db.catedratico ON proyecto_db.publicacion.Catedratico_NoCatedratico=proyecto_db.catedratico.NoCatedratico WHERE proyecto_db.publicacion.Curso_CodigoCurso=?;";
     db.query(sqlSelect, search, (err, result) => {
@@ -68,7 +68,7 @@ app.get('/api/pub/filterCurso/:curso', (req, res) => {
 app.get('/api/pub/filterCursoNombre/:curso', (req, res) => {
 
     const search = req.params.curso;
-    console.log(search);
+    //console.log(search);
     const sqlSelect =
         "SELECT * FROM proyecto_db.publicacion LEFT JOIN proyecto_db.curso ON proyecto_db.publicacion.Curso_CodigoCurso=proyecto_db.curso.CodigoCurso LEFT JOIN proyecto_db.catedratico ON proyecto_db.publicacion.Catedratico_NoCatedratico=proyecto_db.catedratico.NoCatedratico WHERE proyecto_db.curso.Nombre LIKE ?;";
     db.query(sqlSelect, `%${search}%`, (err, result) => {
@@ -80,7 +80,7 @@ app.get('/api/pub/filterCursoNombre/:curso', (req, res) => {
 app.get('/api/pub/filterCatedraticoNombre/:catedratico', (req, res) => {
 
     const search = req.params.catedratico;
-    console.log(search);
+    //console.log(search);
     const sqlSelect =
         "SELECT * FROM proyecto_db.publicacion LEFT JOIN proyecto_db.curso ON proyecto_db.publicacion.Curso_CodigoCurso=proyecto_db.curso.CodigoCurso LEFT JOIN proyecto_db.catedratico ON proyecto_db.publicacion.Catedratico_NoCatedratico=proyecto_db.catedratico.NoCatedratico WHERE proyecto_db.catedratico.Nombres LIKE ?";
     db.query(sqlSelect, `%${search}%`, (err, result) => {
@@ -92,7 +92,7 @@ app.get('/api/pub/filterCatedraticoNombre/:catedratico', (req, res) => {
 app.get('/api/pub/filterCatedratico/:catedratico', (req, res) => {
 
     const search = req.params.catedratico;
-    console.log(search);
+    //console.log(search);
     const sqlSelect =
         "SELECT * FROM proyecto_db.publicacion LEFT JOIN proyecto_db.curso ON proyecto_db.publicacion.Curso_CodigoCurso=proyecto_db.curso.CodigoCurso LEFT JOIN proyecto_db.catedratico ON proyecto_db.publicacion.Catedratico_NoCatedratico=proyecto_db.catedratico.NoCatedratico WHERE proyecto_db.publicacion.Catedratico_NoCatedratico=?;";
     db.query(sqlSelect, search, (err, result) => {
@@ -133,7 +133,6 @@ app.post("/api/login/:user", (req, res) => {
         if (err) {
             res.send({ err: err })
         }
-
         if (result.length > 0) {
             res.send(result)
         } else {
