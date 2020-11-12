@@ -5,10 +5,18 @@
         <meta charset="utf-8">
         <meta name="Author" title="Kervin">
         <title>Perfil</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
         <link href="EstilosPerfil.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300&display=swap" rel="stylesheet">
-        <script src="Perfil.js"></script>
+
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>  
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
     </head>
 
     <body>
@@ -23,20 +31,56 @@
                 <div class="Datos" id="Apellidos">Apellido1 Apellido2</div>
                 <div class="Datos" id="CorreoReg">usuario@dominio.algo</div>
             </div>
-            <div id="Botones">
-                <a href="#"><div class="boton" id="Modificar">Modificar Datos</div></a>
-                <a href="#"><div class="boton" id="Pensum">Ver Pénsum</div></a>
-                <a href="javascript: location.reload()"><div class="boton" id="Cargar">Cargar Cursos</div></a>
-            </div>
+            
         </header>
 
+        <div id="ModificarDatos"></div>
+                <script>
+                    const $ModificarDatos = document.getElementById("ModificarDatos")
+                    const useState = React.useState;
 
+                    const MiPensum = ({id}) => {
+                        const [enabled, setEnabled] = useState(true);
+                        const src = 'https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg';
+                        const src2 = 'https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg';
+
+                        const pensumClaseName = enabled ? "" : "disabled";
+
+                        return(
+                            <picture className = {pensumClaseName}>
+                                {id ? (
+                                    <img
+                                        onClick = {() =>  {
+                                            setEnabled(!enabled)
+                                        }
+                                        }
+                                        className = {pensumClaseName}
+                                        src = {src2}
+                                    />
+                                ) : (
+                                    <i> Sin Imagen </i>
+                                )}
+                                <strong>{enabled ? name: "Perfil"}</strong>
+
+                            </picture>
+                        )
+                    }
+                </script>
+
+        <div id="Botones">
+            <a href="#"><div class="boton" id="Modificar">
+                
+            </div></a>
+            <a href="#"><div class="boton" id="Pensum">Ver Pénsum</div></a>
+            <a href="javascript: location.reload()"><div class="boton" id="Cargar">Cargar Cursos</div></a>
+        </div>
+        
         <div id="Contenido">
-            <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>  
-            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-            <script src="ModificarDatos.js"></script>
+            <script></script>
         </div>
 
+        <div id="VerPensumIS"></div>        
+            
         <div id="Cursos">
             <h3>CURSOS APROBADOS</h3>
         </div>

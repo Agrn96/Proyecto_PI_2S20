@@ -107,3 +107,15 @@ a .boton:hover{
 #Cargar{
     right: 5px;
 }
+
+#Contenido{
+    height: 50px;
+    width: auto;
+}
+
+#VerPensumIS{
+    height: 100px;
+    width: auto;
+}
+
+
