@@ -24,16 +24,40 @@ app.get('/api/get', (req, res) => {
     })
 })
 
-//API call para agregar informacion al base de datos
-app.post('/api/insert', (req, res) => {
+app.post('/api/login', (req, res) => {
+    const RegistroAcademico = Number(req.body.RegistroAcademico)
+    const Contrasena = req.body.Contrasena
 
-    const usuario = req.body.usuario
-    const contrasena = req.body.contrasena
+    const sqlSelect =
+        "SELECT EXISTS (SELECT * FROM  proyecto_db.usuario WHERE Carnet=? and Nombres='?')"
+    db.query(sqlSelect, [RegistroAcademico,Contrasena ], (err, result) => {
+        res.log(result);
+    })
+});
+
+app.post('/api/recuperar', (req, res) => {
+    const RegistroAcademico = Number(req.body.RegistroAcademico)
+    const Contrasena = req.body.Contrasena
+    const CorreoElectronico = req.body.CorreoElectronico
 
     const sqlInsert =
-        "INSERT INTO proyecto_db.usuario (Carnet, Nombres) VALUES (?,?)"
-    db.query(sqlInsert, [usuario, contrasena], (err, result) => {
-        console.log(result);
+        "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?,?)"
+    db.query(sqlInsert, [RegistroAcademico, Contrasena ,CorreoElectronico], (err, result) => {
+        console.log(err);
+    })
+});
+
+app.post('/api/registrar', (req, res) => {
+    const RegistroAcademico = Number(req.body.RegistroAcademico)
+    const Nombre = req.body.Nombre
+    const Apellido = re.body.Apellido
+    const Contrasena = req.body.Contrasena
+    const CorreoElectronico = req.body.CorreoElectronico
+
+    const sqlInsert =
+        "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?,?,?,?)"
+    db.query(sqlInsert, [RegistroAcademico, Nombre, Apellido ,Contrasena ,CorreoElectronico], (err, result) => {
+        console.log(err);
     })
 });
 
