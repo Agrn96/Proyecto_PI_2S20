@@ -202,7 +202,7 @@ function PantallaInicial() {
                             <p><b>Mensaje:</b> {val.Mensaje}</p>
 
                             <button onClick={() => history.push(`/${user}/pub/${val.idPublicacion}`)}>Ver Comentarios</button>
-                            <button>Ver Perfil</button>
+                            <button onClick={() => history.push(`/${user}/Perfil`)}>Ver Perfil</button>
                             <button>Dejar Comentario</button>
 
                         </div>

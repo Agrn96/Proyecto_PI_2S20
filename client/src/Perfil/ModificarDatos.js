@@ -1,5 +1,5 @@
 import React from 'react'
-import './Estilos.css'
+import './Estiloss.css'
 
 class ModificarDatos extends React.Component {
 
