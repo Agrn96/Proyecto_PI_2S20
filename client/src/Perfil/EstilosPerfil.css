@@ -118,4 +118,13 @@ a .boton:hover{
     width: auto;
 }
 
+img{
+    height: 100px;
+    width: 70px;
+}
+
+img.disabled{
+    height: 1000px;
+    width: 700px;
+}
 
