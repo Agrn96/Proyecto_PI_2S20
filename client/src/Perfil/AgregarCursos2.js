@@ -4,6 +4,7 @@ class AgregarCursos extends React.Component {
     constructor(props){
         super(props)
         this.state = {
+            codigoCurso: '',
             nombreCurso: '',
             notaCurso: ''
         }
@@ -18,6 +19,11 @@ class AgregarCursos extends React.Component {
     render(){
         return(
             <div>
+                <input 
+                    value={this.state.codigoCurso}
+                    onChange={this.onChange.bind(this)}
+                    name="codigoCurso" id="codigoCurso" type="text" />
+
                 <label htmlFor="nombreCurso">Nombre del Curso</label>
                 <input 
                     value={this.state.nombreCurso}

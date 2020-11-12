@@ -45,5 +45,3 @@ class AgregarCurso extends Component{
         )
     }
 }
-
-render (<AgregarCurso /> document.getElementById('Contenido'))
