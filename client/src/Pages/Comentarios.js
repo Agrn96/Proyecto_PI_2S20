@@ -1,12 +1,12 @@
 import { React, useState, useEffect } from 'react'
 import { useParams, useHistory } from "react-router-dom";
 import Axios from 'axios';
-import './App.css';
-let Login_Info = 201612174;
+import '../EstilosCSS/App.css';
 function Comentarios() {
 
     let history = useHistory();
     let { idPub } = useParams();
+    let { user } = useParams();
     const [mensaje, setMensaje] = useState("");
 
     const [comentarios, setComentarios] = useState([]);
@@ -25,13 +25,13 @@ function Comentarios() {
 
     const submitCom = () => {//INSERT statement updates sql database and updates list/array shown in real time, Register User
         Axios.post("http://localhost:3001/api/com/insert", {
-            usuario: Login_Info,
+            usuario: user,
             mensaje: mensaje,
             idPub: idPub
         });
         setComentarios([...comentarios,//Agrega a la lista que aparece de Usuarios
         {
-            Usuario_Carnet: Login_Info,
+            Usuario_Carnet: user,
             Mensaje: mensaje,
             Publicacion_idPublicacion: idPub
         },
@@ -51,7 +51,6 @@ function Comentarios() {
                             <p><b>Mensaje:</b> {val.Mensaje}</p>
 
                             <button>Ver Perfil</button>
-                            <button>Dejar Comentario</button>
                             <button onClick={() => history.push("/")}>Regresar</button>
 
                         </div>

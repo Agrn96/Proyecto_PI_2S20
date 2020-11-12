@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import '../EstilosCSS/App.css';
 import Axios from 'axios';
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 document.body.style = 'background: grey;';
-let Login_Info = 201612174;
+
 
 function PantallaInicial() {
+    let { user } = useParams();
     let history = useHistory();
     //Variables de insert
     const [search, setSearch] = useState("");
@@ -74,21 +75,21 @@ function PantallaInicial() {
     const submitPub = () => {//INSERT statement updates sql database and updates list/array shown in real time, Register User
         if (value == 1) {
             Axios.post("http://localhost:3001/api/pub/insert", {
-                usuario: Login_Info,
+                usuario: user,
                 mensaje: mensaje,
                 tipo: value,
                 extra: selectvalue0
             });
         } else if (value == 2) {
             Axios.post("http://localhost:3001/api/pub/insert", {
-                usuario: Login_Info,
+                usuario: user,
                 mensaje: mensaje,
                 tipo: value,
                 extra: selectvalue1
             });
         } else {
             Axios.post("http://localhost:3001/api/pub/insert", {
-                usuario: Login_Info,
+                usuario: user,
                 mensaje: mensaje,
                 tipo: value,
                 extra: selectvalue2
@@ -200,7 +201,7 @@ function PantallaInicial() {
                             <p><b>Catedratico:</b> {val.Nombres} </p>
                             <p><b>Mensaje:</b> {val.Mensaje}</p>
 
-                            <button onClick={()=> history.push(`/pub/${val.idPublicacion}`)}>Ver Comentarios: {val.idPublicacion}</button>
+                            <button onClick={() => history.push(`/${user}/pub/${val.idPublicacion}`)}>Ver Comentarios</button>
                             <button>Ver Perfil</button>
                             <button>Dejar Comentario</button>
 
