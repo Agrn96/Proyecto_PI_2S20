@@ -77,12 +77,50 @@
                         $VerPensum
                     );
                 </script>
+        
+        <div class="boton" id="ModificarDatos">Modificar Datos </div>
+        <script type="text/babel">
+            const $ModificarDatos = document.getElementById("ModificarDatos")
+            const useState = React.useState;
+
+            const MiModificacion = ({id}) => {
+                const [enabled, setEnabled] = useState(true);
+                const src = 'https://www.beep.es/blog/wp-content/uploads/2015/10/actualizacion.png';
+                const src2 = 'https://www.ingenieria.usac.edu.gt/pensa/ingenieria_sistemas.jpg';
+
+                        const modificarClaseName = enabled ? "" : "disabled";
+
+                        return(
+                            <picture className = {pensumClaseName}>
+                                {id ? (
+                                    <img
+                                        onClick = {() =>  {
+                                            setEnabled(!enabled)
+                                        }
+                                        }
+                                        className = {pensumClaseName}
+                                        src = {src2}
+                                    />
+                                ) : (
+                                    <i> Sin Imagen </i>
+                                )}
+                                <strong>{enabled ? name: "Pensum"}</strong>
+
+                            </picture>
+                        )
+                    }
+
+                    ReactDOM.render(
+                        <div>
+                            <h3>Ver Pensum</h3>
+                            <MiPensum id="1"/>
+                        </div>,
+                        $VerPensum
+                    );
+        </script>
 
         <div id="Botones">
-            <a href="#"><div class="boton" id="Modificar">
-                
-            </div></a>
-            <a href="#"><div class="boton" id="Pensum">Ver Pénsum</div></a>
+            <a href="#"><div class="boton" id="Modificar">Modificar Datos </div></a>
             <a href="javascript: location.reload()"><div class="boton" id="Cargar">Cargar Cursos</div></a>
         </div>
         

@@ -1,3 +1,7 @@
+*{
+    background: rgb(214, 211, 219);
+}
+
 header{
     position: relative;
     margin: 20px;
@@ -124,7 +128,9 @@ img{
 }
 
 img.disabled{
-    height: 1000px;
-    width: 700px;
+    height: 1500px;
+    width: 1050px;
+    display: block;
+    margin: auto;
 }
 
