@@ -60,7 +60,7 @@ class ModificarDatos extends React.Component {
                     onChange={this.onChange.bind(this)}
                     name="contrasena" id="contrasena" type="password" />
                 
-                <button>Guardar Cambios</button>
+                <button onClick={this.save.bind(this)}>Guardar Cambios</button>
                 <span>{this.state.verificacion}</span>
             </div>
         )

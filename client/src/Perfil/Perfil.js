@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Route } from "react-router";
+import { useHistory } from 'react-router'
 import './EstilosPerfil.css'
 
 class Perfil extends React.Component{
@@ -10,9 +12,19 @@ class Perfil extends React.Component{
         }
     }
 
+    history = useHistory(); 
+
+
     render(){
         return(
-            <div>      
+            <div>   
+                <button onClick={() => history.push('/VerPensum')}>
+                    Ver Pensum </button>   
+                <button onClick={() => history.push('/ModificarDatos')}>
+                    Modificar Datos </button> 
+                <button onClick={() => history.push('/CargarCursos2')}>
+                    Cargar Cursos </button> 
+                    
                 <div id="EtiquetasDatos">
                     <div class="Etiqueta" id="Nombre">Nombres:</div>
                     <div class="Etiqueta" id="Apellido">Apellidos:</div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import './EstilosPerfil.css'
 
 class AgregarCursos extends React.Component {
     constructor(props){
@@ -6,7 +7,8 @@ class AgregarCursos extends React.Component {
         this.state = {
             codigoCurso: '',
             nombreCurso: '',
-            notaCurso: ''
+            notaCurso: '',
+            message: ''
         }
     }
 
@@ -16,9 +18,16 @@ class AgregarCursos extends React.Component {
         })
     }
 
+    save(e){
+        this.setState({
+            message: 'Se han guardado los cambios'
+        })
+    }
+
     render(){
         return(
             <div>
+                <label htmlFor="codigoCurso">Codigo del Curso</label>
                 <input 
                     value={this.state.codigoCurso}
                     onChange={this.onChange.bind(this)}
@@ -35,6 +44,9 @@ class AgregarCursos extends React.Component {
                     value={this.state.notaCurso}
                     onChange={this.onChange.bind(this)}
                     name="notaCurso" id="notaCurso" type="text" />
+
+                <button onClick={this.save.bind(this)}>Guardar Cambios</button>
+                <span>{this.state.message}</span>
             </div>
         )
     }
