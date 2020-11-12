@@ -8,6 +8,7 @@
         <link href="EstilosPerfil.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Saira:wght@300&display=swap" rel="stylesheet">
+        <script src="Perfil.js"></script>
     </head>
 
     <body>
@@ -23,11 +24,18 @@
                 <div class="Datos" id="CorreoReg">usuario@dominio.algo</div>
             </div>
             <div id="Botones">
-                <div class="boton" id="Modificar">Modificar Datos</div>
-                <div class="boton" id="Pensum">Ver Pénsum</div>
-                <div class="boton" id="Cargar">Cargar Cursos</div>
+                <a href="#"><div class="boton" id="Modificar">Modificar Datos</div></a>
+                <a href="#"><div class="boton" id="Pensum">Ver Pénsum</div></a>
+                <a href="javascript: location.reload()"><div class="boton" id="Cargar">Cargar Cursos</div></a>
             </div>
         </header>
+
+
+        <div id="Contenido">
+            <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>  
+            <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+            <script src="ModificarDatos.js"></script>
+        </div>
 
         <div id="Cursos">
             <h3>CURSOS APROBADOS</h3>
