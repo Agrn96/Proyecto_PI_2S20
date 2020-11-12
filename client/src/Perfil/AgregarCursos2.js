@@ -27,23 +27,31 @@ class AgregarCursos extends React.Component {
     render(){
         return(
             <div>
-                <label htmlFor="codigoCurso">Codigo del Curso</label>
-                <input 
-                    value={this.state.codigoCurso}
-                    onChange={this.onChange.bind(this)}
-                    name="codigoCurso" id="codigoCurso" type="text" />
+                <div>
+                    <label htmlFor="codigoCurso">Codigo del Curso</label>
+                    <input 
+                        value={this.state.codigoCurso}
+                        onChange={this.onChange.bind(this)}
+                        name="codigoCurso" id="codigoCurso" type="text" />
+                </div>
+                
+                <div>
+                    <label htmlFor="nombreCurso">Nombre del Curso</label>
+                    <input 
+                        value={this.state.nombreCurso}
+                        onChange={this.onChange.bind(this)}
+                        name="nombreCurso" id="nombreCurso" type="text" />
+                </div>
 
-                <label htmlFor="nombreCurso">Nombre del Curso</label>
-                <input 
-                    value={this.state.nombreCurso}
-                    onChange={this.onChange.bind(this)}
-                    name="nombreCurso" id="nombreCurso" type="text" />
-
-                <label htmlFor="notaCurso">Calificacion del Curso</label>
-                <input 
-                    value={this.state.notaCurso}
-                    onChange={this.onChange.bind(this)}
-                    name="notaCurso" id="notaCurso" type="text" />
+                <div>
+                    <label htmlFor="notaCurso">Calificacion del Curso</label>
+                    <input 
+                        value={this.state.notaCurso}
+                        onChange={this.onChange.bind(this)}
+                        name="notaCurso" id="notaCurso" type="text" />
+                </div>
+                
+                
 
                 <button onClick={this.save.bind(this)}>Guardar Cambios</button>
                 <span>{this.state.message}</span>

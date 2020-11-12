@@ -12,11 +12,7 @@ class verPensum extends React.Component{
         return(
             <div>
                 <img id="VerPensum" src="https://www.ingenieria.usac.edu.gt/pensa/ingenieria_sistemas.jpg"> 
-                Pensum Ingenieria en Ciencias y Sistemas</img>
-
-                <div>
-                    
-                </div>
+                </img>
             </div>
         )
     }

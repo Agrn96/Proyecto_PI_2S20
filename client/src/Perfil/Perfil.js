@@ -23,13 +23,11 @@ function Perfil() {
                 <div class="Datos" id="CorreoReg">usuario@dominio.algo</div>
             </div>
 
-            <p><Link to='/VerPensum' className="Link">Ver Pensum</Link></p>
-
-            <button onClick={() => history.push('/VerPensum')}>
+            <button class="boton" id="Pensum" onClick={() => history.push('/Perfil/VerPensum')}>
                 Ver Pensum </button>
-            <button onClick={() => history.push('/ModificarDatos')}>
+            <button class="boton" id="Modificar" onClick={() => history.push('/Perfil/ModificarDatos')}>
                 Modificar Datos </button>
-            <button onClick={() => history.push('/CargarCursos2')}>
+            <button class="boton" id="Cargar" onClick={() => history.push('/Perfil/CargarCursos2')}>
                 Cargar Cursos </button>
 
             <div id="ListaCursos">
