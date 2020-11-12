@@ -24,14 +24,20 @@ app.get('/api/get', (req, res) => {
     })
 })
 
-app.post('/api/login', (req, res) => {
-    const RegistroAcademico = Number(req.body.RegistroAcademico)
-    const Contrasena = req.body.Contrasena
-
+app.post("/api/login/:user", (req, res) => {
+    const usuario = req.params.user
     const sqlSelect =
-        "SELECT EXISTS (SELECT * FROM  proyecto_db.usuario WHERE Carnet=? and Nombres='?')"
-    db.query(sqlSelect, [RegistroAcademico,Contrasena ], (err, result) => {
-        res.log(result);
+        "SELECT * FROM proyecto_db.usuario WHERE Carnet = ? ";
+    db.query(sqlSelect, usuario, (err, result) => {
+        if (err) {
+            res.send({ err: err })
+        }
+        if (result.length > 0) {
+            console.log(result);
+            res.send(result)
+        } else {
+            res.send({ message: "Wrong username/password combination!" })
+        }
     })
 });
 
