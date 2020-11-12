@@ -216,24 +216,41 @@ app.post("/api/login/:user", (req, res) => {
     })
 });
 
+app.put("/api/update", (req, res) => {
+    const name = req.body.usuario;
+    const nombre = req.body.contrasena;
+    const sqlUpdate =
+        "UPDATE proyecto_db.usuario SET Nombres = ? WHERE Carnet = ?";
+    console.log(name);
+    db.query(sqlUpdate, [nombre, name], (err, result) => {
+        if (err) console.log(err);
+    });
+});
+
 app.post('/api/recuperar', (req, res) => {
     const RegistroAcademico = Number(req.body.RegistroAcademico)
     const Contrasena = req.body.Contrasena
     const CorreoElectronico = req.body.CorreoElectronico
 
-    const sqlInsert =
-        "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?,?)"
-    db.query(sqlInsert, [RegistroAcademico, Contrasena, CorreoElectronico], (err, result) => {
+    const sqlUpdate =
+        "UPDATE proyecto_db.usuario SET Contrasena = ? WHERE Carnet = ?"
+    db.query(sqlUpdate, [Contrasena, RegistroAcademico], (err, result) => {
         console.log(err);
     })
 });
 
 app.post('/api/registrar', (req, res) => {
-    const RegistroAcademico = Number(req.body.RegistroAcademico)
+    const RegistroAcademico = req.body.RegistroAcademico
     const Nombre = req.body.Nombre
-    const Apellido = re.body.Apellido
+    const Apellido = req.body.Apellido
     const Contrasena = req.body.Contrasena
     const CorreoElectronico = req.body.CorreoElectronico
+
+    console.log(RegistroAcademico);
+    console.log(Nombre);
+    console.log(Apellido);
+    console.log(Contrasena);
+    console.log(CorreoElectronico);
 
     const sqlInsert =
         "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?,?,?,?)"
@@ -300,16 +317,7 @@ app.delete("/api/delete/:user", (req, res) => {
     });
 });
 
-app.put("/api/update", (req, res) => {
-    const name = req.body.usuario;
-    const nombre = req.body.contrasena;
-    const sqlUpdate =
-        "UPDATE proyecto_db.usuario SET Nombres = ? WHERE Carnet = ?";
-    console.log(name);
-    db.query(sqlUpdate, [nombre, name], (err, result) => {
-        if (err) console.log(err);
-    });
-});
+
 
 //Servidor esta corriendo en el port 3001
 app.listen(3001, () => {

@@ -57,10 +57,12 @@ body
 
 .conten{
     width: 100%;
+    
 }
 
 .formulario{
     text-align: center;
+    background-color: lightgray;
 }
 
 .form {
