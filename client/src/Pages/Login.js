@@ -7,7 +7,7 @@ class Login extends Component{
         return (
             <form className="formulario">
             <div className="logo-usac">
-                <img className="logo" src={logoUSAC}></img>
+                <img className="logo" src={logoUSAC} alt={'USAC'}></img>
             </div>
                 <div className="conten">
                     <div className="input">

@@ -21,6 +21,7 @@ app.get('/api/get', (req, res) => {
         "SELECT * FROM proyecto_db.usuario";
     db.query(sqlSelect, (err, result)=> {
         res.send(result);
+        console.log(err)
     })
 })
 
@@ -46,9 +47,9 @@ app.post('/api/registrar', (req, res) => {
     const Correo = req.body.CorreoElectronico
 
     const sqlInsert =
-        "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?)"
+        "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?,?,?,?)"
     db.query(sqlInsert, [Carnet, Nombre, Apellido ,Contrasena ,Correo], (err, result) => {
-        console.log(result);
+        console.log(err);
     })
 });
 

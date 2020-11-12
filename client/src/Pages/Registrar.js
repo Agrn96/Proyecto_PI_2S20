@@ -1,37 +1,27 @@
-import React, { Component } from 'react';
+
+import React, {useEffect, useState } from 'react';
 import logoUSAC from '../img/logo-usac-png.png';
 import '../EstilosCSS/App.css';
-import ReactDOM from 'react-dom';
+//import ReactDOM from 'react-dom';
 import Axios from 'axios';
 
-
-const url ="https://locahost:3000/api/registrar";
-
-class Registrar extends Component{
-  state={
-      data: [],
-      form:{
-        RegistroAcademico: '',
-        Nombre: '',
-        Apellido: '', 
-        Contraseña: '',
-        CorreoElectronico: ''
-      }
-    }
+function Registrar(){
   
+    const [RegistroAcademico, setUsuario] = useState('');
+    const [Nombre, setNombre] = useState('');
+    const [Apellido, setApellido] = useState('');
+    const [Contraseña, setContraseña] = useState('');
+    const [CorreoElectronico, setCorreoElectronico] = useState('');
+    //const [usuarios, setUsuarios] = useState([]);
 
-  handleChange=async e=>{
-    e.persist();
-    await this.setState({
-      form:{
-        ...this.state.form,
-        [e.target.name]: e.target.value
-      }
-    });
-    console.log(this.state.form)
-  }
+    useEffect( () => {
+      Axios.get("https://localhost:3001/api/get").then((response)=>{
+        console.log(response.data);
+        //setUsuarios(response.data)
+      });
+    }, []) ;
 
-  iniciar=async()=>{
+  /*iniciar=async()=>{
     window.location.href="./PantallaIniciar";
   }
 
@@ -39,40 +29,21 @@ class Registrar extends Component{
     ReactDOM.render(
       window.location.href="./Login"
     );
-  }
+  }*/
   
-  peticionGet=()=>{
-    Axios.get(url).then(response=>{
-      this.setState({data: response.data});
-    });
-  }
-
-  peticionPost= async()=>{
-      await Axios.post(url, this.state.form).then(response=>{
-        this.peticionGet();
-      });
-  }
-
-  sumbitHandler = e =>{
-    //e.preventDefault()
-    //console.log(this.state)
-    /*Axios.post("https://localhost3001/registrar",{
-      Carnet: this.state.form.RegistroAcademico, 
-      Nombre: this.state.form.Nombre,
-      Apellido: this.state.form.Apellido,
-      Contrasena:  this.state.form.Contraseña,
-      Correo: this.state.form.CorreoElectronico
+const peticionPost= ()=>{
+        Axios.post("https://localhost:3001/api/registrar",{
+        Carnet: RegistroAcademico,
+        Nombre: Nombre,
+        Apellido: Apellido,
+        Contrasena: Contraseña,
+        Correo: CorreoElectronico
       })
-      .then(response=>{
-        console.log(response);
-      })
-      .catch(error=>{
-        console.log(error);
-      });*/
-    }
-    
-  render(){
-    const {form} = this.state
+      /*setUsuario([...usuarios,
+      {Carnet: RegistroAcademico, Nombre: Contraseña}])*/
+      
+    };
+
     return (
       <form className="formulario" >
         <div className="logo-usac">
@@ -85,8 +56,7 @@ class Registrar extends Component{
                   name="RegistroAcademico" 
                   placeholder="Registro Academico" 
                   required 
-                  onChange ={this.handleChange}
-                  value ={form.RegistroAcademico}
+                  onChange ={(e)=>{setUsuario(e.target.value)}}
                   />
               </div>
               <div className="input">
@@ -94,8 +64,7 @@ class Registrar extends Component{
                   name="Nombre"  
                   placeholder="Nombre" 
                   required
-                  onChange ={this.handleChange}
-                  value= {form.Nombre}
+                  onChange ={(e)=>{setNombre(e.target.value)}}
                   />
               </div>
               <div className="input">
@@ -104,8 +73,7 @@ class Registrar extends Component{
                   name="Apellido" 
                   placeholder="Apellido" 
                   required 
-                  onChange ={this.handleChange}
-                  value = {form.Apellido}
+                  onChange ={(e)=>{setApellido(e.target.value)}}
                   />
               </div>
               <div className="input">
@@ -114,8 +82,7 @@ class Registrar extends Component{
                   name="Contraseña" 
                   placeholder="Contraseña" 
                   required 
-                  onChange ={this.handleChange}
-                  value = {form.Contraseña}
+                  onChange ={(e)=>{setContraseña(e.target.value)}}
                   />
               </div>
               <div className="input">
@@ -124,16 +91,16 @@ class Registrar extends Component{
                   name="CorreoElectronico" 
                   placeholder="Correo Electronico" 
                   required 
-                  onChange ={this.handleChange}
-                  value = {form.CorreoElectronico }
+                  onChange ={(e)=>{setCorreoElectronico(e.target.value)}}
                   />
               </div>
-              <button type="submit" className="button" onClick={()=>this.peticionPost()}>Registrarse</button>
-              <p>Ya tienes una cuenta? <button onClick={this.login.bind(this)}>Iniciar Seccion</button></p>
+              <button className="button" onClick={peticionPost}>Registrarse</button>
+              <p>Ya tienes una cuenta? <button>Iniciar Seccion</button></p>
+          
+              
           </div>
         </form>
+        //{usuarios.map((val)=>{return <h1>Usuarios: {val.Carnet} | Nombres:{val.Nombre}</h1> })}
     );
   }
-}
-
 export default Registrar;
