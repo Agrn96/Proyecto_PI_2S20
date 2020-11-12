@@ -8,7 +8,7 @@ const port = 3306;
 const db = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: 'password',
+    password: 'taiwan101',
     database: 'proyecto_db',
 });
 app.use(cors());
@@ -25,7 +25,7 @@ app.get('/api/get', (req, res) => {
 })
 
 //API call para agregar informacion al base de datos
-app.post('/api/insert', (req, res) => {
+/*app.post('/api/insert', (req, res) => {
 
     const usuario = req.body.usuario
     const contrasena = req.body.contrasena
@@ -33,6 +33,21 @@ app.post('/api/insert', (req, res) => {
     const sqlInsert =
         "INSERT INTO proyecto_db.usuario (Carnet, Nombres) VALUES (?,?)"
     db.query(sqlInsert, [usuario, contrasena], (err, result) => {
+        console.log(result);
+    })
+});*/
+
+app.post('/api/registrar', (req, res) => {
+
+    const Carnet = req.body.RegistroAcademico
+    const Nombre = req.body.Nombre
+    const Apellido = re.body.Apellido
+    const Contrasena = req.body.Contraseña
+    const Correo = req.body.CorreoElectronico
+
+    const sqlInsert =
+        "INSERT INTO proyecto_db.usuario (Carnet, Nombres, Apellidos, Contrasena, Correo) VALUES (?,?)"
+    db.query(sqlInsert, [Carnet, Nombre, Apellido ,Contrasena ,Correo], (err, result) => {
         console.log(result);
     })
 });
