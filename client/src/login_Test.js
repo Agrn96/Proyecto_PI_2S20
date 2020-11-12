@@ -9,7 +9,6 @@ function App() {
   const [usuarios, setUsuarios] = useState([]);//Testing purposes - can be removed
 
   const [newContrasena, setNewContrasena] = useState("");
-
   const [loginStatus, setLoginStatus] = useState("");
 
   //API calls que modifican los datos en el base
@@ -20,7 +19,7 @@ function App() {
     });
   }, []);
 
-  const submitLogin = () => {//INSERT statement updates sql database and updates list/array shown in real time
+  const submitLogin = () => {//INSERT statement updates sql database and updates list/array shown in real time, Register User
     Axios.post("http://localhost:3001/api/insert", {
       usuario: usuario,
       contrasena: contrasena
