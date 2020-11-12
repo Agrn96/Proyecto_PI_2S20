@@ -2,48 +2,32 @@
 import React, {useEffect, useState } from 'react';
 import logoUSAC from '../img/logo-usac-png.png';
 import '../EstilosCSS/App.css';
-//import ReactDOM from 'react-dom';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Registrar(){
   
     const [RegistroAcademico, setUsuario] = useState('');
     const [Nombre, setNombre] = useState('');
     const [Apellido, setApellido] = useState('');
-    const [Contraseña, setContraseña] = useState('');
+    const [Contrasena, setContrasena] = useState('');
     const [CorreoElectronico, setCorreoElectronico] = useState('');
-    //const [usuarios, setUsuarios] = useState([]);
 
     useEffect( () => {
-      Axios.get("https://localhost:3001/api/get").then((response)=>{
+      Axios.get("http://localhost:3001/api/get").then((response)=>{
         console.log(response.data);
-        //setUsuarios(response.data)
       });
     }, []) ;
-
-  /*iniciar=async()=>{
-    window.location.href="./PantallaIniciar";
-  }
-
-  login(e){
-    ReactDOM.render(
-      window.location.href="./Login"
-    );
-  }*/
   
 const peticionPost= ()=>{
-        Axios.post("https://localhost:3001/api/registrar",{
-        Carnet: RegistroAcademico,
+      Axios.post("http://localhost:3001/api/registrar",{
+        RegistroAcademico: RegistroAcademico,
         Nombre: Nombre,
         Apellido: Apellido,
-        Contrasena: Contraseña,
-        Correo: CorreoElectronico
-      })
-      /*setUsuario([...usuarios,
-      {Carnet: RegistroAcademico, Nombre: Contraseña}])*/
-      
-    };
-
+        Contrasena: Contrasena,
+        CorreoElectronico: CorreoElectronico
+      });
+};
     return (
       <form className="formulario" >
         <div className="logo-usac">
@@ -79,10 +63,10 @@ const peticionPost= ()=>{
               <div className="input">
                   <input 
                   type="password" 
-                  name="Contraseña" 
+                  name="Contrasena" 
                   placeholder="Contraseña" 
                   required 
-                  onChange ={(e)=>{setContraseña(e.target.value)}}
+                  onChange ={(e)=>{setContrasena(e.target.value)}}
                   />
               </div>
               <div className="input">
@@ -95,12 +79,9 @@ const peticionPost= ()=>{
                   />
               </div>
               <button className="button" onClick={peticionPost}>Registrarse</button>
-              <p>Ya tienes una cuenta? <button>Iniciar Seccion</button></p>
-          
-              
+              <p>Ya tienes una cuenta? <Link to='/' className="link">Recuperar Contrasena</Link></p>
           </div>
         </form>
-        //{usuarios.map((val)=>{return <h1>Usuarios: {val.Carnet} | Nombres:{val.Nombre}</h1> })}
     );
   }
 export default Registrar;

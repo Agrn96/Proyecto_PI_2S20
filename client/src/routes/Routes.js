@@ -1,14 +1,18 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Login from '../Pages/Login';
 import Registrar from '../Pages/Registrar';
-import Login from '../Pages/Login'
+import Recuperar from '../Pages/RecuperarContra';
+import PagInicial from '../Pages/PaginaInicial';
 
 function Routes(){
     return(
         <BrowserRouter>
             <Switch>
-                <Route exact path="/" component={Registrar}/>
-                <Route exact path="/login" component={Login}/>
+                <Route exact path="/" component={Login}/>
+                <Route exact path="/registrar" component={Registrar}/>
+                <Route exact path="/recuperar" component={Recuperar}/>
+                <Route exact path="/index" component={ PagInicial}/>
             </Switch>
         </BrowserRouter>
     );
