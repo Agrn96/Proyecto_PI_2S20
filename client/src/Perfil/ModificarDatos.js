@@ -1,20 +1,29 @@
 import React from 'react'
+import './Estilos.css'
 
 class ModificarDatos extends React.Component {
+
     constructor(props){
         super(props)
         this.state = {
             nombres: '',
             apellidos: '',
-            registroAcademico='',
-            email='',
-            contrasena=''
+            registroAcademico:'',
+            email:'',
+            contrasena:'',
+            verificacion: ''
         }
     }
 
     onChange(e){
         this.setState({
             [e.target.name]: e.target.value
+        })
+    }
+
+    save(e){
+        this.setState({
+            verificacion: 'Se han guardado los cambios'
         })
     }
 
@@ -50,6 +59,9 @@ class ModificarDatos extends React.Component {
                     value={this.state.contrasena}
                     onChange={this.onChange.bind(this)}
                     name="contrasena" id="contrasena" type="password" />
+                
+                <button onClick={}>Guardar Cambios</button>
+                <span>{this.state.verificacion}</span>
             </div>
         )
     }
